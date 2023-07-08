@@ -1,0 +1,2806 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\,";
+    mso-displayed-thousand-separator:" ";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="71">
+            <img src="https://korolbog.atlassian.net/images/icon-jira-software-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="71">
+            <a href="https://korolbog.atlassian.net/issues/?jql=project+%3D+%22FDBZ%22+ORDER+BY+created+DESC">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="71">
+            Отображение <strong>21</strong> задач в <strong>08/июл/23 7:49 AM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                                                        Проект
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                                                        Ключ
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                                                        Pезюме
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                                                        Тип задачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                                                        Статус
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                                                        Приоритет
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                                                        Решение
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                                                        Исполнитель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                                                        Автор
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                                                        Создатель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                                                        Создано
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                                                        Последний просмотр
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                                                        Обновлено
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                                                        Решено
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                                                        Версии Affects
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                                                        Версии исправления
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                                                        Компоненты
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                                                        Срок исполнения
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                                                        Голоса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                                                        Наблюдатели
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                                                        Изображения
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                                                        Исходная оценка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                                                        Оценка остатка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                                                        Затраченное время
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                                                        КПД (полезная работа/затраченная работа)
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                                                        Подзадачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                                                        Связанные задачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                                                        Среда
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                                                        Описание
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                                                        Уровень безопасности
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                                                        Прогресс
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                                                        Суммарный прогресс
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                                                        Суммарное затраченое время
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                                                        Суммарная оценка остатка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                                                        Суммарная первоначальная оценка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                                                        Метки
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statuscategorychangedate" data-id="statuscategorychangedate">
+                                                        Дата изменения категории статуса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statusCategory" data-id="statusCategory">
+                                                        Категория статуса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-parent" data-id="parent">
+                                                        Родитель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10009" data-id="customfield_10009">
+                                                        Actual end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10008" data-id="customfield_10008">
+                                                        Actual start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10003" data-id="customfield_10003">
+                                                        Approvers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10031" data-id="customfield_10031">
+                                                        Category
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10007" data-id="customfield_10007">
+                                                        Change reason
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10006" data-id="customfield_10006">
+                                                        Change risk
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10005" data-id="customfield_10005">
+                                                        Change type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10026" data-id="customfield_10026">
+                                                        Compass
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10013" data-id="customfield_10013">
+                                                        Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10014" data-id="customfield_10014">
+                                                        Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10011" data-id="customfield_10011">
+                                                        Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10012" data-id="customfield_10012">
+                                                        Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10021" data-id="customfield_10021">
+                                                        Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10004" data-id="customfield_10004">
+                                                        Impact
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10017" data-id="customfield_10017">
+                                                        Issue color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10027" data-id="customfield_10027">
+                                                        Заблокированные формы
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10028" data-id="customfield_10028">
+                                                        Открытые формы
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10002" data-id="customfield_10002">
+                                                        Organizations
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10018" data-id="customfield_10018">
+                                                        Parent Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10019" data-id="customfield_10019">
+                                                        Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10010" data-id="customfield_10010">
+                                                        Request Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10020" data-id="customfield_10020">
+                                                        Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10015" data-id="customfield_10015">
+                                                        Start date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10034" data-id="customfield_10034">
+                                                        Story Points
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10016" data-id="customfield_10016">
+                                                        Story point estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10029" data-id="customfield_10029">
+                                                        Отправленные формы
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10023" data-id="customfield_10023">
+                                                        Target end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10022" data-id="customfield_10022">
+                                                        Target start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10001" data-id="customfield_10001">
+                                                        Team
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10030" data-id="customfield_10030">
+                                                        Совокупные формы
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10024" data-id="customfield_10024">
+                                                        [CHART] Date of First Response
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                                                        development
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10020" rel="10020" data-issuekey="FDBZ-21" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-21" href="https://korolbog.atlassian.net/browse/FDBZ-21">FDBZ-21</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: допущена орфографическая ошибка в слове &quot;вкусное&quot;
+	
+	
+
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:41 PM </td>
+                                            <td class="lastViewed"> 08/июл/23 7:39 AM </td>
+                                            <td class="updated"> 23/мар/23 12:43 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10021/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_124226012.png">
+            изображение_2023-03-23_124226012.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10.<br/>
+<br/>
+Opera Версия: 96.0.4693.80
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link]  .<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;<br/>
+# Проверить написание слова &quot;Вкусное&quot;<br/>
+<br/>
+* Ожидаемый результат: &quot;Вкусное&quot;<br/>
+* Фактический результат: В слове &quot;вкусное&quot; пропущена буква &quot;у&quot;: &quot;Вксное&quot;
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:41 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0004f:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10019" rel="10019" data-issuekey="FDBZ-20" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-20" href="https://korolbog.atlassian.net/browse/FDBZ-20">FDBZ-20</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;:  на вкладке &quot;Напитки&quot;  название блюда ведет НЕ на карточку блюда
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:39 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:40 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10019/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_124011606.png">
+            изображение_2023-03-23_124011606.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-18                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Напитки&quot;<br/>
+# Кликнуть на название блюда в любой карточке<br/>
+<br/>
+* Ожидаемый результат: Название блюда ведет на карточку блюда<br/>
+* Фактический результат: Все карточки ведут в верх страницы
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:39 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00047:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10018" rel="10018" data-issuekey="FDBZ-19" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-19" href="https://korolbog.atlassian.net/browse/FDBZ-19">FDBZ-19</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;:  вкладка &quot;Напитки&quot; НЕ сортирует выдачу в соответствии с одноименной категорией.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:36 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:37 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-17                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Напитки&quot;<br/>
+## Проверить карточки блюд на отношение к напиткам<br/>
+<br/>
+* Ожидаемый результат: В списке блюд напитки<br/>
+* Фактический результат: В выдачу попали блюда не являющиеся напитками
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:36 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003z:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10017" rel="10017" data-issuekey="FDBZ-18" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-18" href="https://korolbog.atlassian.net/browse/FDBZ-18">FDBZ-18</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;:  на вкладке &quot;Снеки&quot;  название блюда ведет НЕ на карточку блюда
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:32 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:39 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-16,                                                FDBZ-20                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Снеки&quot;<br/>
+# Кликнуть на название блюда в любой карточке<br/>
+<br/>
+* Ожидаемый результат: Название блюда ведет на карточку блюда<br/>
+* Фактический результат: Все карточки ведут в верх страницы<br/>
+
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:32 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003r:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10016" rel="10016" data-issuekey="FDBZ-17" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-17" href="https://korolbog.atlassian.net/browse/FDBZ-17">FDBZ-17</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: вкладка &quot;Снеки&quot; НЕ сортирует выдачу в соответствии с одноименной категорией.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:30 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:36 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10018/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_123133929.png">
+            изображение_2023-03-23_123133929.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-15,                                                FDBZ-19                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Снеки&quot;<br/>
+# Проверить карточки блюд на отношение к снекам<br/>
+<br/>
+* Ожидаемый результат: В списке блюд снеки<br/>
+* Фактический результат: В выдачу попали блюда не являющиеся снеками<br/>
+
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:30 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003j:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10015" rel="10015" data-issuekey="FDBZ-16" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-16" href="https://korolbog.atlassian.net/browse/FDBZ-16">FDBZ-16</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;:  на вкладке &quot;Пицца&quot;  название блюда ведет НЕ на карточку блюда
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:27 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:36 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-15,                                                FDBZ-18                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Пицца&quot;<br/>
+# Кликнуть на название блюда в любой карточке<br/>
+<br/>
+* Ожидаемый результат: Название блюда ведет на карточку блюда<br/>
+* Фактический результат: Все карточки ведут в верх страницы<br/>
+
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:27 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003b:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10014" rel="10014" data-issuekey="FDBZ-15" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-15" href="https://korolbog.atlassian.net/browse/FDBZ-15">FDBZ-15</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: вкладка &quot;Пицца&quot; НЕ сортирует выдачу в соответствии с одноименной категорией.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:24 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:30 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10017/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_122610116.png">
+            изображение_2023-03-23_122610116.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-16,                                                FDBZ-17,                                                FDBZ-14                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Пицца&quot;<br/>
+# Проверить карточки блюд на отношение к пиццам<br/>
+<br/>
+* Ожидаемый результат: В списке блюд пиццы<br/>
+* Фактический результат: В выдачу попали блюда не являющиеся пиццами
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:24 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00033:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10013" rel="10013" data-issuekey="FDBZ-14" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-14" href="https://korolbog.atlassian.net/browse/FDBZ-14">FDBZ-14</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: на вкладке &quot;Фастфуд&quot; оценка блюда выходит за допустимый диапазон значений
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:13 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:24 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10016/Screenshot+2023-03-23+121747.jpg">
+            Screenshot 2023-03-23 121747.jpg
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-13,                                                FDBZ-15                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Фастфуд&quot; при необходимости<br/>
+# Проверить карточку Окунь С Ризотто Из Булгура<br/>
+# Проверить карточку Говяжьи Щечки<br/>
+# Проверить карточку &quot;Креветки С Рукколой И Пармезаном&quot;<br/>
+# Проверить остальные карточки в разделе<br/>
+<br/>
+Ожидаемый результат: 1-5 звезд<br/>
+<br/>
+Фактический результат: 6 звезд
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:13 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0002v:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10012" rel="10012" data-issuekey="FDBZ-13" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-13" href="https://korolbog.atlassian.net/browse/FDBZ-13">FDBZ-13</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: на вкладке &quot;Фастфуд&quot; цена блюда содержится НЕ на каждой выданной карточке 
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 12:10 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:13 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10014/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_121114745.png">
+            изображение_2023-03-23_121114745.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-12,                                                FDBZ-14                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Фастфуд&quot; при необходимости<br/>
+# Навести курсор мыши на цену карточки &quot;Окунь С Ризотто Из Булгура&quot;<br/>
+<br/>
+Ожидаемый результат: Целое число или число с десятичной дробью<br/>
+<br/>
+Фактический результат: $E2,B7E151628AED2A6A
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 12:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0002n:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10011" rel="10011" data-issuekey="FDBZ-12" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-12" href="https://korolbog.atlassian.net/browse/FDBZ-12">FDBZ-12</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;:  на вкладке &quot;Фастфуд&quot; изображение блюда содержится НЕ на каждой выданной карточке 
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 11:55 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:10 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10013/image-20230323-085432.png">
+            image-20230323-085432.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-13                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на вкладку &quot;Фастфуд&quot; при необходимости.<br/>
+# Проверить карточку &quot;Куриная Грудка&quot;.<br/>
+<br/>
+Ожидаемый результат: Изображение блюда содержится на каждой выданной карточке <br/>
+<br/>
+Фактический результат: Отсутствует изображение блюда &quot;Куриная Грудка&quot;
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 11:55 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0002f:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10010" rel="10010" data-issuekey="FDBZ-11" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-11" href="https://korolbog.atlassian.net/browse/FDBZ-11">FDBZ-11</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: на вкладке &quot;Фастфуд&quot;  название блюда ведет НЕ на карточку блюда
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 11:52 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 11:52 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;.<br/>
+# Перейти на любую вкладку &quot;Фастфуд&quot; при необходимости.<br/>
+# Кликнуть на название блюда в любой карточке.<br/>
+<br/>
+* Ожидаемый результат: Название блюда ведет на карточку блюда<br/>
+* Фактический результат: Все карточки ведут в верх страницы
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 11:52 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00027:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10009" rel="10009" data-issuekey="FDBZ-10" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-10" href="https://korolbog.atlassian.net/browse/FDBZ-10">FDBZ-10</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наше Вкусное Меню На Сегодня&quot;: вкладка &quot;Фастфуд&quot; НЕ сортирует выдачу в соответствии с одноименной категорией.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 11:43 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 12:43 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10012/image-20230323-084232.png">
+            image-20230323-084232.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10.<br/>
+<br/>
+Opera Версия: 96.0.4693.80
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link]  .<br/>
+# Скролл вниз до раздела &quot;Наше вкусное меню на сегодня&quot;<br/>
+# Перейти на вкладку &quot;Фастфуд&quot; при необходимости<br/>
+# Проверить карточки блюд на отношение к фастфуду<br/>
+<br/>
+* Ожидаемый результат: В списке блюд фастфуд<br/>
+* Фактический результат: В выдачу попали блюда не являющиеся фастфудом
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 11:43 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001z:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10008" rel="10008" data-issuekey="FDBZ-9" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-9" href="https://korolbog.atlassian.net/browse/FDBZ-9">FDBZ-9</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: в блоке с описанием повара Zinnat Zara опечатка в слове &quot;Zinnat&quot;
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Lowest
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 11:00 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 11:05 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10011/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_110331799.png">
+            изображение_2023-03-23_110331799.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-8                        </td>
+                                            <td class="environment">      HP envy<br/>
+Windows 10<br/>
+Opera 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница[https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела “Наши повара”.<br/>
+# Проверить блок описания повара Zinnat Zara.<br/>
+<br/>
+* Ожидаемый результат:  “Zinnat“<br/>
+* Фактический результат: “АZinnat”.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 11:00 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001r:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10007" rel="10007" data-issuekey="FDBZ-8" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-8" href="https://korolbog.atlassian.net/browse/FDBZ-8">FDBZ-8</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: в блоке с описанием повара Zinnat Zara находятся посторонние теги
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 10:59 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 11:02 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10010/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_105924024.png">
+            изображение_2023-03-23_105924024.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-9                        </td>
+                                            <td class="environment">      HP envy<br/>
+Windows 10<br/>
+Opera 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница[https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела “Наши повара”.<br/>
+# Проверить блок описания повара Zinnat Zara.<br/>
+<br/>
+* Ожидаемый результат:  отсутствуют посторонние теги.<br/>
+* Фактический результат:  в тексте посторонние теги  “&lt; div&gt;шеф-повара АZinnat&lt; div&gt;”.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 10:59 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001j:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10006" rel="10006" data-issuekey="FDBZ-7" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-7" href="https://korolbog.atlassian.net/browse/FDBZ-7">FDBZ-7</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: в корне слова &quot;повара&quot; вместо буквы &quot;а&quot; стоит &quot;о&quot;.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Lowest
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 10:52 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 10:52 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10009/Screenshot+2023-03-23+105218.jpg">
+            Screenshot 2023-03-23 105218.jpg
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница[https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела “Наши повара”.<br/>
+# Проверить написание слова “повара”<br/>
+<br/>
+* Ожидаемый результат:  “повара”<br/>
+* Фактический результат:  “повора”
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 10:52 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001b:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10005" rel="10005" data-issuekey="FDBZ-6" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-6" href="https://korolbog.atlassian.net/browse/FDBZ-6">FDBZ-6</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: разные повара имеют одинаковые номера телефонов.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 10:41 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 10:45 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10008/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2023-03-23_104346512.png">
+            изображение_2023-03-23_104346512.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-4                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link] .<br/>
+# Скролл вниз до раздела “Наши повара”.<br/>
+# Проверить уникальность номеров телефонов поваров.<br/>
+<br/>
+* Ожидаемый результат: у разных поваров разные номера телефонов.<br/>
+* Фактический результат: у разных поваров одинаковые номера телефонов.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 10:41 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00013:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10004" rel="10004" data-issuekey="FDBZ-5" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-5" href="https://korolbog.atlassian.net/browse/FDBZ-5">FDBZ-5</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: НЕ осуществляется переход в соцсети поваров
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 10:20 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 10:38 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-4                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link] .<br/>
+# Скролл вниз до раздела “Наши повара”.<br/>
+# Проверить переход по ссылкам на соцсети, которые ведут повара.<br/>
+<br/>
+* Ожидаемый результат: переход на страницу в соцсети.<br/>
+* Фактический результат: возврат в верх страницы.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 10:20 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0000v:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10003" rel="10003" data-issuekey="FDBZ-4" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-4" href="https://korolbog.atlassian.net/browse/FDBZ-4">FDBZ-4</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: разные повара имеют одинаковые фотографии.
+
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 10:10 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/мар/23 10:41 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10007/Screenshot+2023-03-23+101404.jpg">
+            Screenshot 2023-03-23 101404.jpg
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-5,                                                FDBZ-3,                                                FDBZ-6                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link] .<br/>
+# Скролл вниз до раздела “Наши повара”.<br/>
+# Проверить уникальность фотографий поваров.<br/>
+<br/>
+* Ожидаемый результат: у разных поваров разные фотографии.<br/>
+* Фактический результат: у поваров 1 и 3  (слева-направо) одинаковые фотографии.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 10:10 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0000n:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10002" rel="10002" data-issuekey="FDBZ-3" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-3" href="https://korolbog.atlassian.net/browse/FDBZ-3">FDBZ-3</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Наши повара&quot;: карточки отображаются НЕ на одном уровне.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 10:09 AM </td>
+                                            <td class="lastViewed"> 08/июл/23 7:34 AM </td>
+                                            <td class="updated"> 23/мар/23 10:15 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10006/Screenshot+2023-03-23+100739.jpg">
+            Screenshot 2023-03-23 100739.jpg
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-4                        </td>
+                                            <td class="environment">      HP envy<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Opera Версия: 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница [https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link] <br/>
+# Скролл вниз до раздела “Наши повара”<br/>
+# Проверить расположение карточек по высоте.<br/>
+<br/>
+* Ожидаемый результат: карточки отображаются на одном уровне<br/>
+* Фактический результат: вторая карточка длиннее первой и третьей (слева-направо)
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 10:09 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0000f:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10001" rel="10001" data-issuekey="FDBZ-2" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-2" href="https://korolbog.atlassian.net/browse/FDBZ-2">FDBZ-2</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Меню на сегодня&quot;: НЕ соблюдено максимальное количество звезд (оценок) категорий.
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 9:45 AM </td>
+                                            <td class="lastViewed"> 08/июл/23 7:35 AM </td>
+                                            <td class="updated"> 23/мар/23 11:11 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10002/Screenshot+2023-03-23+095037.jpg">
+            Screenshot 2023-03-23 095037.jpg
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-1                        </td>
+                                            <td class="environment">      HP envy<br/>
+Windows 10<br/>
+Opera 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница[https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела “Меню на сегодня”.<br/>
+# Проверить кол-во звезд на карточке “Холодные закуски”.<br/>
+<br/>
+* Ожидаемый результат:  кол-во звезд от 1 до 5.<br/>
+* Фактический результат:  6 звезд.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 9:45 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00007:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10000" rel="10000" data-issuekey="FDBZ-1" class="issuerow">
+                                            <td class="project">    Foodbuzz
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="FDBZ-1" href="https://korolbog.atlassian.net/browse/FDBZ-1">FDBZ-1</a>
+</td>
+                                            <td class="summary"><p>
+                Раздел &quot;Меню на сегодня&quot;: текст описания категории НЕ подсвечивается красным цветом
+    </p>
+</td>
+                                            <td class="issuetype">    Баг
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Bogdan Korolev
+    </td>
+                                            <td class="reporter">            Bogdan Korolev
+    </td>
+                                            <td class="creator">            Bogdan Korolev
+    </td>
+                                            <td class="created"> 23/мар/23 9:43 AM </td>
+                                            <td class="lastViewed"> 08/июл/23 7:36 AM </td>
+                                            <td class="updated"> 23/мар/23 9:45 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://korolbog.atlassian.net/secure/attachment/10000/image-20230323-064307.png">
+            image-20230323-064307.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        FDBZ-2                        </td>
+                                            <td class="environment">      HP envy<br/>
+Windows 10<br/>
+Opera 97.0.4719.26
+  </td>
+                                            <td class="description">      * Шаги<br/>
+<br/>
+# Открыта страница[https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|https://test-stand.gb.ru/seminar_stands/foodbuzz/index.html|smart-link].<br/>
+# Скролл вниз до раздела “Меню на сегодня”.<br/>
+# Навести на любую карточку блюда.<br/>
+<br/>
+* Ожидаемый результат:  текст описания категории подсвечивается красным цветом.<br/>
+* Фактический результат:  текст не меняется.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 23/мар/23 9:43 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|hzzzzz:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Нет
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+        </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="71"><font size="1">
+        Полученный Sat Jul 08 04:49:13 UTC 2023 Bogdan Korolev используя JIRA 1001.0.0-SNAPSHOT#100230-sha1:acc9c6faa431835e3d60324266cd68ad895e617d.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
